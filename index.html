@@ -9,11 +9,42 @@
 <span data-bind="text:HelloWorld">
 	
 </span>
-<input data-bind="value:HelloWorld" name="HelloWorld">
+<input data-bind="value:HelloWorld" name="HelloWorld" id="myname">
+<input data-bind="value:myArrayOfObjects()[0].name" name="HelloWorld1" id="mynamearray">
+<input data-bind="value:myfirstName" name="myfirstName" id="myfirstName">
+<input data-bind="value:myfirstName" name="myfirstName" id="myfirstName">
+<input data-bind="value:mylastName" name="mylastName" id="mylastName">
+<span data-bind="text:myfullName"</span>
 </body>
 <script>
 var myViewModel={
-	HelloWorld:ko.observable('Hello World Karnakar')
+	HelloWorld:ko.observable('Hello World Karnakar'),
+	myArray:ko.observableArray(['element1','2','elements']),
+	myArrayOfObjects:ko.observable(
+
+	[
+	{
+		name:'karnakar',
+		age:'29'
+	},
+	{
+		name:'tinku',
+		age:'2'
+	},
+	{
+		name:'chai',
+		age:'24'
+	}
+
+	]
+
+	),
+	myfirstName:ko.observable('Karnakar'),
+	mylastName:ko.observable('Thallapalli'),
+	myfullName:ko.computed(function(){
+		return 'Karnar Thallapalli';
+	})
+	
 
 };
 ko.applyBindings(myViewModel);
