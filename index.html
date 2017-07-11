@@ -9,7 +9,7 @@
 <span data-bind="text:HelloWorld">
 	
 </span>
-<input data-bind="value:HelloWorld" name="HelloWorld" id="myname">
+<input data-bind="text:HelloWorld" name="HelloWorld" id="myname">
 <input data-bind="value:myArrayOfObjects()[0].name" name="HelloWorld1" id="mynamearray">
 <input data-bind="value:myfirstName" name="myfirstName" id="myfirstName">
 <input data-bind="value:myfirstName" name="myfirstName" id="myfirstName">
@@ -17,10 +17,11 @@
 <span data-bind="text:myfullName"</span>
 </body>
 <script>
-var myViewModel={
-	HelloWorld:ko.observable('Hello World Karnakar'),
-	myArray:ko.observableArray(['element1','2','elements']),
-	myArrayOfObjects:ko.observable(
+function  myViewModel(){
+	this.HelloWorld=ko.observable('Hello World Karnakar');
+	this.myArray=ko.observableArray(['element1','2','elements']);
+	
+	this.myArrayOfObjects=ko.observableArray(
 
 	[
 	{
@@ -38,15 +39,15 @@ var myViewModel={
 
 	]
 
-	),
-	myfirstName:ko.observable('Karnakar'),
-	mylastName:ko.observable('Thallapalli'),
-	myfullName:ko.computed(function(){
-		return 'Karnar Thallapalli';
-	})
+	);
+	this.myfirstName=ko.observable('Karnakar');
+	this.mylastName=ko.observable('Thallapalli');
+	this.myfullName=ko.computed(function() {
+    return  this.myfirstName()+' '+this.mylastName();
+    },this)
 	
 
 };
-ko.applyBindings(myViewModel);
+ko.applyBindings(new myViewModel());
 </script>
 </html>
