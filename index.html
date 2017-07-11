@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> My Knockout Example</title>
+	<script type="text/javascript" src="knockout-3.4.2.js"></script>
+
+</head>
+<body>
+<span data-bind="text:HelloWorld">
+	
+</span>
+<input data-bind="value:HelloWorld" name="HelloWorld">
+</body>
+<script>
+var myViewModel={
+	HelloWorld:ko.observable('Hello World1')
+
+};
+ko.applyBindings(myViewModel);
+</script>
+</html>
